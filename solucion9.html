@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mostrar caracteres de dos en dos</title>
+</head>
+<body>
+    <script>
+        function mostrarCaracteresDeDosEnDos() {
+            const texto = prompt("Ingresa un texto:");
+            let resultado = "";
+
+            for (let i = 0; i < texto.length; i += 2) {
+                resultado += texto.substring(i, i + 2) + " ";
+            }   
+
+            document.body.innerHTML += `<p>Caracteres de 2 en 2: ${resultado}</p>`;
+        }
+
+mostrarCaracteresDeDosEnDos();
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Positivo, Negativo o Neutro</title>
+</head>
+<body>
+  <h1>Clasificación de Número</h1>
+  <div id="resultado"></div>
+
+  <script>
+    // Solicitar número
+    const numero = parseFloat(prompt("Ingrese un número:"));
+    let mensaje = "";
+
+    // Verificar el tipo de número
+    if (numero > 0) {
+      mensaje = `El número ${numero} es POSITIVO.`;
+    } else if (numero < 0) {
+      mensaje = `El número ${numero} es NEGATIVO.`;
+    } else if (numero === 0) {
+      mensaje = `El número ingresado es NEUTRO (cero).`;
+    } else {
+      mensaje = "El valor ingresado no es un número válido.";
+    }
+
+    // Mostrar en alerta
+    alert(mensaje);
+
+    // Mostrar en consola
+    console.log(mensaje);
+
+    // Mostrar en el cuerpo de la página
+    document.getElementById("resultado").innerHTML = `<p>${mensaje}</p>`;
+  </script>
+</body>
+</html>

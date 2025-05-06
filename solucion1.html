@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario con JS</title>
+</head>
+<body>
+  <h1>Datos del Usuario</h1>
+  <div id="resultado"></div>
+
+  <script>
+    // Solicita los datos
+    const carnet = prompt("Ingrese su carnet:");
+    const nombre = prompt("Ingrese su nombre:");
+
+    // Mensaje formateado
+    const mensaje = `Carnet: ${carnet}\nNombre: ${nombre}`;
+
+    // Mostrar en alerta
+    alert(mensaje);
+
+    // Mostrar en consola
+    console.log(mensaje);
+
+    // Mostrar en el cuerpo de la página
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = `<p><strong>Carnet:</strong> ${carnet}</p><p><strong>Nombre:</strong> ${nombre}</p>`;
+  </script>
+</body>
+</html>

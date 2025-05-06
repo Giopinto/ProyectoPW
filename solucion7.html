@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Números pares de un rango</title>
+</head>
+<body>
+    <script>
+        function mostrarPares() {
+            const num1 = parseInt(prompt("Ingresa el primer número:"));
+            const num2 = parseInt(prompt("Ingresa el segundo número:"));
+            let resultado = "";
+
+            for (let i = Math.min(num1, num2); i <= Math.max(num1, num2); i++) {
+                if (i % 2 === 0) {
+                    resultado += i + " ";
+                }
+            }
+            
+            document.body.innerHTML += `<p>Números pares: ${resultado}</p>`;
+        }
+
+        mostrarPares();
+    </script>
+</body>
+</html>

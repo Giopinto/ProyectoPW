@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ejercicios de Texto</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 4px;
+    }
+    table {
+        margin-top: 10px;
+    }
+    button {
+        margin: 5px;
+    }
+    input,
+    select {
+        margin: 5px;
+    }
+    </style>
+</head>
+<body>
+    <h2>11. Mostrar Números del 1 al Valor Ingresado</h2>
+    <input type="number" id="inputNumero" min="1" />
+    <button onclick="mostrarNumeros()">Mostrar Números</button>
+    <div id="numerosResultado"></div>
+
+    <h2>12. Lista Desplegable y Botones</h2>
+    <select id="palabraSelect">
+        <option value="Computadora">Computadora</option>
+        <option value="Programación">Programación</option>
+        <option value="JavaScript">JavaScript</option>
+    </select>
+    <button onclick="mostrarPrimerDigito()">Primer Dígito</button>
+    <button onclick="mostrarUltimoDigito()">Último Dígito</button>
+    <button onclick="mostrarCaracteres()">Caracteres</button>
+    <div id="resultadoPalabra"></div>
+
+    <h2>13. Análisis de Dos Textos</h2>
+    <input type="text" id="texto1" placeholder="Texto 1" />
+    <input type="text" id="texto2" placeholder="Texto 2" />
+    <br />
+    <button onclick="contarCaracteres()">Cantidad de Caracteres</button>
+    <button onclick="contarLetraS()">Contar 's' o 'S'</button>
+    <button onclick="mostrarPares()">Caracteres en Posición Par</button>
+    <div id="resultadoTexto"></div>
+
+    <h2>14. Contar Vocales</h2>
+    <input type="text" id="textoVocales" placeholder="Ingresa un texto">
+    <button onclick="contarVocales()">Contar Vocales</button>
+    <div id="tablaVocales"></div>
+
+    <h2>15. Crear Tabla con Filas y Columnas</h2>
+    <input type="number" id="filas" min="1" placeholder="Filas">
+    <input type="number" id="columnas" min="1" placeholder="Columnas">
+    <button onclick="crearTabla()">Crear Tabla</button>
+    <div id="tablaGenerada"></div>
+
+    <script>
+    function mostrarNumeros() {
+        const valor = parseInt(document.getElementById("inputNumero").value);
+        let resultado = "";
+        for (let i = 1; i <= valor; i++) {
+            resultado += i + " ";
+        }
+        document.getElementById("numerosResultado").textContent = resultado;
+    }
+
+    function mostrarPrimerDigito() {
+        const palabra = document.getElementById("palabraSelect").value;
+        document.getElementById(
+            "resultadoPalabra"
+        ).innerHTML = `<p>Primer carácter: ${palabra.charAt(0)}</p>`;
+    }
+
+    function mostrarUltimoDigito() {
+        const palabra = document.getElementById("palabraSelect").value;
+        document.getElementById(
+            "resultadoPalabra"
+        ).innerHTML = `<p>Último carácter: ${palabra.slice(-1)}</p>`;
+    }
+
+    function mostrarCaracteres() {
+        const palabra = document.getElementById("palabraSelect").value;
+        let html = "<table><tr><th>Caracteres</th></tr>";
+        for (let i = 0; i < palabra.length; i++) {
+            html += `<tr><td>${palabra.charAt(i)}</td></tr>`;
+        }
+        html += "</table>";
+        document.getElementById("resultadoPalabra").innerHTML = html;
+    }
+
+    function contarCaracteres() {
+        const t1 = document.getElementById("texto1").value;
+        const t2 = document.getElementById("texto2").value;
+        const total = t1.length + t2.length;
+        let tabla = `
+        <table>
+            <tr><th>Texto</th><th>Cantidad</th></tr>
+            <tr><td>No. 1</td><td>${t1.length}</td></tr>
+            <tr><td>No. 2</td><td>${t2.length}</td></tr>
+            <tr><td>TOTAL</td><td>${total}</td></tr>
+        </table>`;
+        document.getElementById("resultadoTexto").innerHTML = tabla;
+    }
+
+    function contarLetraS() {
+        const t1 = document.getElementById("texto1").value;
+        const t2 = document.getElementById("texto2").value;
+        const totalTexto = t1 + t2;
+        const conteo = (totalTexto.match(/s/gi) || []).length;
+        document.getElementById(
+            "resultadoTexto"
+        ).innerHTML = `<p>Total de letras 's' o 'S': ${conteo}</p>`;
+    }
+
+    function mostrarPares() {
+        const t1 = document.getElementById("texto1").value;
+        const t2 = document.getElementById("texto2").value;
+        const texto = t1 + t2;
+        let html = `
+        <table>
+        <tr><th>Correlativo</th><th>Valor</th></tr>`;
+        let count = 1;
+        for (let i = 1; i < texto.length; i += 2) {
+        html += `<tr><td>${count++}</td><td>${texto.charAt(i)}</td></tr>`;
+        }
+        html += `<tr><td>TOTAL</td><td>${count - 1}</td></tr></table>`;
+        document.getElementById("resultadoTexto").innerHTML = html;
+    }
+    function contarVocales() {
+    const texto = document.getElementById("textoVocales").value.toLowerCase();
+    const vocales = { 'a': 0, 'e': 0, 'i': 0, 'o': 0, 'u': 0 };
+
+    for (let char of texto) {
+        if (vocales.hasOwnProperty(char)) {
+            vocales[char]++;
+        }
+    }
+
+    const total = Object.values(vocales).reduce((a, b) => a + b, 0);
+    let html = `
+        <table>
+            <tr><th>VOCAL</th><th>CANTIDAD</th></tr>
+            <tr><td>A,a</td><td>${vocales['a']}</td></tr>
+            <tr><td>E,e</td><td>${vocales['e']}</td></tr>
+            <tr><td>I,i</td><td>${vocales['i']}</td></tr>
+            <tr><td>O,o</td><td>${vocales['o']}</td></tr>
+            <tr><td>U,u</td><td>${vocales['u']}</td></tr>
+            <tr><td><strong>TOTAL</strong></td><td><strong>${total}</strong></td></tr>
+        </table>`;
+        document.getElementById("tablaVocales").innerHTML = html;
+    }
+
+    function crearTabla() {
+    const filas = parseInt(document.getElementById("filas").value);
+    const columnas = parseInt(document.getElementById("columnas").value);
+
+    if (isNaN(filas) || isNaN(columnas) || filas <= 0 || columnas <= 0) {
+        alert("Por favor, ingresa números válidos para filas y columnas.");
+        return;
+    }
+
+    let html = "<table>";
+    for (let i = 0; i < filas; i++) {
+        html += "<tr>";
+        for (let j = 0; j < columnas; j++) {
+            html += `<td>Fila ${i + 1}<br>Col ${j + 1}</td>`;
+        }
+        html += "</tr>";
+    }
+    html += "</table>";
+
+    document.getElementById("tablaGenerada").innerHTML = html;
+    }
+    </script>
+</body>
+</html>

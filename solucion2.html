@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Hipotenusa</title>
+</head>
+<body>
+  <h1>Calcular la Hipotenusa</h1>
+  <div id="resultado"></div>
+
+  <script>
+    // Solicita los catetos
+    const catetoA = parseFloat(prompt("Ingrese el valor del cateto A:"));
+    const catetoB = parseFloat(prompt("Ingrese el valor del cateto B:"));
+
+    // Calcula la hipotenusa
+    const hipotenusa = Math.sqrt(Math.pow(catetoA, 2) + Math.pow(catetoB, 2));
+
+    // Crear mensaje
+    const mensaje = `Cateto A: ${catetoA}\nCateto B: ${catetoB}\nHipotenusa: ${hipotenusa.toFixed(2)}`;
+
+    // Mostrar en alerta
+    alert(mensaje);
+
+    // Mostrar en consola
+    console.log(mensaje);
+
+    // Mostrar en el cuerpo de la página
+    const resultadoDiv = document.getElementById("resultado");
+    resultadoDiv.innerHTML = `
+      <p><strong>Cateto A:</strong> ${catetoA}</p>
+      <p><strong>Cateto B:</strong> ${catetoB}</p>
+      <p><strong>Hipotenusa:</strong> ${hipotenusa.toFixed(2)}</p>
+    `;
+  </script>
+</body>
+</html>

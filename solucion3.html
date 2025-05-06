@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Promedio de Notas</title>
+</head>
+<body>
+  <h1>Promedio de Notas</h1>
+  <div id="resultado"></div>
+
+  <script>
+    // Solicita nombre y curso
+    const nombre = prompt("Ingrese su nombre:");
+    const curso = prompt("Ingrese el nombre del curso:");
+
+    // Solicita cinco notas
+    let notas = [];
+    for (let i = 1; i <= 5; i++) {
+      let nota = parseFloat(prompt(`Ingrese la nota ${i}:`));
+      notas.push(nota);
+    }
+
+    // Calcula el promedio
+    const suma = notas.reduce((total, n) => total + n, 0);
+    const promedio = suma / notas.length;
+
+    // Mensaje para mostrar
+    const mensaje = `Nombre: ${nombre}\nCurso: ${curso}\nPromedio: ${promedio.toFixed(2)}`;
+
+    // Mostrar en alerta
+    alert(mensaje);
+
+    // Mostrar en consola
+    console.log(mensaje);
+
+    // Mostrar en el cuerpo de la página
+    document.getElementById("resultado").innerHTML = `
+      <p><strong>Nombre:</strong> ${nombre}</p>
+      <p><strong>Curso:</strong> ${curso}</p>
+      <p><strong>Promedio:</strong> ${promedio.toFixed(2)}</p>
+    `;
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tabla de Multiplicación</title>
+</head>
+<body>
+<h1>Tabla de Multiplicación</h1>
+<div id="resultado"></div>
+
+<script>
+    // Solicitar el número
+    const numero = parseInt(prompt("Ingrese un número para mostrar su tabla de multiplicación:"));
+
+    // Verificar si es un número válido
+    if (isNaN(numero)) {
+    alert("Por favor, ingrese un número válido.");
+    } else {
+    let mensaje = `Tabla de multiplicar del ${numero}:\n`;
+    let html = `<h2>Tabla del ${numero}</h2><ul>`;
+
+    for (let i = 1; i <= 10; i++) {
+        let resultado = numero * i;
+        mensaje += `${numero} x ${i} = ${resultado}\n`;
+        html += `<li>${numero} x ${i} = ${resultado}</li>`;
+    }
+
+    html += `</ul>`;
+
+      // Mostrar en alerta
+    alert(mensaje);
+
+      // Mostrar en consola
+    console.log(mensaje);
+
+      // Mostrar en el cuerpo de la página
+    document.getElementById("resultado").innerHTML = html;
+    }
+</script>
+</body>
+</html>

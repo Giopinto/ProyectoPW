@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calcular el MCD</title>
+</head>
+<body>
+    <script>
+        function calcularMCD() {
+            const num1 = parseInt(prompt("Ingresa el primer número:"));
+            const num2 = parseInt(prompt("Ingresa el segundo número:"));
+
+            function mcd(a, b) {
+                while (b !== 0) {
+                    let temp = b;
+                    b = a % b;
+                    a = temp;
+                }
+                return a;
+            }
+
+            const resultado = mcd(num1, num2);
+            document.body.innerHTML += `<p>MCD: ${resultado}</p>`;
+            alert(`MCD: ${resultado}`);
+            console.log(`MCD: ${resultado}`);
+        }
+
+        calcularMCD();
+    </script>
+</body>
+</html>

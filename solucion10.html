@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Contar palabra en texto</title>
+</head>
+<body>
+    <script>
+        function contarPalabraEnTexto() {
+            const texto = prompt("Ingresa un texto:");
+            const palabra = prompt("Ingresa una palabra a buscar:");
+            const regex = new RegExp(palabra, "g");
+            const coincidencias = texto.match(regex);
+            const count = coincidencias ? coincidencias.length : 0;
+            document.body.innerHTML += `<p>La palabra "${palabra}" se repite ${count} veces en el texto.</p>`;
+        }
+
+        contarPalabraEnTexto();
+    </script>
+</body>
+</html>
